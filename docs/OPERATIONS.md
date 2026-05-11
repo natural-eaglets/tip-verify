@@ -42,7 +42,7 @@ node indexer/src/index.js
 
 Production publishing uses Pinata's `pinFileToIPFS` endpoint. Set either `PINATA_JWT`, `PINATA_JWT_SECRET`, `IPFS_API_TOKEN` as a JWT alias, or `PINATA_API_KEY` plus `PINATA_SECRET_API_KEY`. The indexer also accepts `PINATA_API_SECRET` as the secret-key alias. `IPFS_API_URL` may point to `https://api.pinata.cloud`, but localhost endpoints are rejected for real publishing.
 
-The GitHub workflow `.github/workflows/publish-hermes-roots.yml` runs twice daily at `00:17` and `12:17` UTC.
+The GitHub workflow `.github/workflows/publish-hermes-roots.yml` has an hourly fallback schedule. In production, the Cloudflare Worker checks upstream Hermes releases hourly and dispatches the workflow when a new supported commit or tag appears.
 
 ## Verify Locally
 

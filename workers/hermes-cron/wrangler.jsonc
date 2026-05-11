@@ -9,7 +9,7 @@
   },
   "vars": {
     "GITHUB_OWNER": "natural-eaglets",
-    "GITHUB_REPO": "TIPHERMES",
+    "GITHUB_REPO": "tip-verify",
     "GITHUB_WORKFLOW_FILE": "publish-hermes-roots.yml",
     "GITHUB_WORKFLOW_REF": "main",
     "HERMES_REPO": "NousResearch/hermes-agent"
