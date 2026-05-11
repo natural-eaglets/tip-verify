@@ -1,0 +1,23 @@
+{
+  "name": "tip-verify-monorepo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/core",
+    "packages/cli",
+    "indexer"
+  ],
+  "scripts": {
+    "test": "node --test packages/core/test/*.test.js && forge test",
+    "test:core": "node --test packages/core/test/*.test.js",
+    "test:contracts": "forge test",
+    "cli": "node packages/cli/bin/tip.js",
+    "build": "echo \"No build step required for the dependency-light v1 JavaScript packages.\""
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "@nomicfoundation/hardhat-verify": "^2.1.0",
+    "dotenv": "^16.4.7",
+    "hardhat": "^2.22.19"
+  }
+}

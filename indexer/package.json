@@ -1,0 +1,13 @@
+{
+  "name": "@tip-verify/indexer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Scheduled publisher for TIP integrity roots.",
+  "dependencies": {
+    "@tip-verify/core": "workspace:*"
+  },
+  "scripts": {
+    "publish:hermes": "node src/index.js"
+  }
+}

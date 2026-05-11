@@ -1,0 +1,12 @@
+{
+  "name": "@tip-verify/core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Core manifest and Merkle hashing utilities for TIP Verify.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

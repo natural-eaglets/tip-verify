@@ -1,0 +1,45 @@
+name: Publish Hermes TIP Roots
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without publishing on-chain"
+        required: false
+        default: "false"
+  schedule:
+    - cron: "17 * * * *"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Publish Hermes roots
+        env:
+          TERNOA_MAINNET_RPC_URL: ${{ secrets.TERNOA_MAINNET_RPC_URL }}
+          TIP_REGISTRY_ADDRESS: ${{ secrets.TIP_REGISTRY_ADDRESS }}
+          PUBLISHER_PRIVATE_KEY: ${{ secrets.PUBLISHER_PRIVATE_KEY }}
+          IPFS_API_URL: ${{ secrets.IPFS_API_URL }}
+          IPFS_API_TOKEN: ${{ secrets.IPFS_API_TOKEN }}
+          PINATA_JWT: ${{ secrets.PINATA_JWT }}
+          PINATA_JWT_SECRET: ${{ secrets.PINATA_JWT_SECRET }}
+          PINATA_API_KEY: ${{ secrets.PINATA_API_KEY }}
+          INATA_API_KEY: ${{ secrets.INATA_API_KEY }}
+          PINATA_SECRET_API_KEY: ${{ secrets.PINATA_SECRET_API_KEY }}
+          PINATA_API_SECRET: ${{ secrets.PINATA_API_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            node indexer/src/index.js --dry-run
+          else
+            node indexer/src/index.js
+          fi

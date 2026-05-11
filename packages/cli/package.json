@@ -1,0 +1,42 @@
+{
+  "name": "tip-verify",
+  "version": "0.2.4",
+  "type": "module",
+  "description": "CLI for verifying repository integrity roots against the TIP registry.",
+  "license": "MIT",
+  "homepage": "https://github.com/tip-verify/tip-verify#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tip-verify/tip-verify.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/tip-verify/tip-verify/issues"
+  },
+  "keywords": [
+    "tip",
+    "integrity",
+    "ternoa",
+    "ipfs",
+    "merkle",
+    "cli",
+    "supply-chain",
+    "hermes"
+  ],
+  "bin": {
+    "tip-verify": "bin/tip.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "prepack": "rm -rf src/core && mkdir -p src && cp -R ../core/src src/core",
+    "pack:dry": "npm pack --dry-run"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "tip-verify-hermes-cron",
+  "account_id": "9c98ef5111ad2c3791020ed1b596daa3",
+  "main": "src/index.js",
+  "compatibility_date": "2026-05-11",
+  "triggers": {
+    "crons": ["0 * * * *"]
+  },
+  "vars": {
+    "GITHUB_OWNER": "natural-eaglets",
+    "GITHUB_REPO": "TIPHERMES",
+    "GITHUB_WORKFLOW_FILE": "publish-hermes-roots.yml",
+    "GITHUB_WORKFLOW_REF": "main",
+    "HERMES_REPO": "NousResearch/hermes-agent"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "STATE",
+      "id": "29559321a3ed4164be1d4ae1df560aea"
+    }
+  ]
+}
