@@ -295,12 +295,28 @@ export function hashTrackedFile(repoRoot, entry) {
   const bytes = stat.isSymbolicLink()
     ? Buffer.from(readlinkSync(fullPath), "utf8")
     : readFileSync(fullPath);
+  const normalizedBytes = normalizeTrackedBytes(entry.path, bytes);
   return {
     path: entry.path.replaceAll("\\", "/"),
     mode: entry.mode,
-    size: bytes.length,
-    sha256: sha256Hex(bytes)
+    size: normalizedBytes.length,
+    sha256: sha256Hex(normalizedBytes)
   };
+}
+
+export function normalizeTrackedBytes(path, bytes) {
+  const normalizedPath = path.replaceAll("\\", "/");
+  if (normalizedPath !== "hermes") return bytes;
+
+  const text = bytes.toString("utf8");
+  if (!text.includes("Hermes Agent CLI launcher.")) return bytes;
+
+  const canonical = "#!/usr/bin/env python3\n";
+  const normalized = text.replace(
+    /^#!.+\/\.hermes\/hermes-agent\/venv\/bin\/python(?:[0-9.]*)?\r?\n/,
+    canonical
+  );
+  return normalized === text ? bytes : Buffer.from(normalized, "utf8");
 }
 
 export function stableFileJson(file) {

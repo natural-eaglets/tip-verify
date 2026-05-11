@@ -1,6 +1,6 @@
 {
   "name": "tip-verify",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "type": "module",
   "description": "CLI for verifying repository integrity roots against the TIP registry.",
   "license": "MIT",

@@ -10,6 +10,7 @@ import {
   getDirtyTrackedFiles,
   keccak256,
   merkleRoot,
+  normalizeTrackedBytes,
   normalizeGitRemote
 } from "../src/index.js";
 
@@ -93,6 +94,13 @@ test("risk labels do not call source edits normal", () => {
   assert.equal(classifyRisk("hermes"), "high-risk");
   assert.equal(classifyRisk("run_agent.py"), "high-risk");
   assert.equal(classifyRisk("README.md"), "modified");
+});
+
+test("Hermes launcher venv shebang is canonicalized", () => {
+  const canonical = Buffer.from("#!/usr/bin/env python3\n\"\"\"\nHermes Agent CLI launcher.\n\"\"\"\n");
+  const installed = Buffer.from("#!/Users/alice/.hermes/hermes-agent/venv/bin/python\n\"\"\"\nHermes Agent CLI launcher.\n\"\"\"\n");
+  assert.deepEqual(normalizeTrackedBytes("hermes", installed), canonical);
+  assert.deepEqual(normalizeTrackedBytes("run_agent.py", installed), installed);
 });
 
 test("Merkle root respects path order via caller-sorted files", () => {
