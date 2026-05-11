@@ -366,6 +366,7 @@ export function getDirtyTrackedFiles(repoRoot) {
 
 export function classifyRisk(path) {
   const high = [
+    /^hermes$/,
     /^run_agent\.py$/,
     /^cli\.py$/,
     /^hermes_bootstrap\.py$/,

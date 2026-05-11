@@ -1,17 +1,17 @@
 {
   "name": "tip-verify",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "type": "module",
   "description": "CLI for verifying repository integrity roots against the TIP registry.",
   "license": "MIT",
-  "homepage": "https://github.com/tip-verify/tip-verify#readme",
+  "homepage": "https://github.com/natural-eaglets/tip-verify#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tip-verify/tip-verify.git",
+    "url": "git+https://github.com/natural-eaglets/tip-verify.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/tip-verify/tip-verify/issues"
+    "url": "https://github.com/natural-eaglets/tip-verify/issues"
   },
   "keywords": [
     "tip",

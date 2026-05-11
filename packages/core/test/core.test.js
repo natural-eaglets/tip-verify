@@ -90,6 +90,7 @@ test("dirty tracked file reporting preserves full path", () => {
 });
 
 test("risk labels do not call source edits normal", () => {
+  assert.equal(classifyRisk("hermes"), "high-risk");
   assert.equal(classifyRisk("run_agent.py"), "high-risk");
   assert.equal(classifyRisk("README.md"), "modified");
 });
